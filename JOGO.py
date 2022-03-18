@@ -21,11 +21,11 @@ def sorteia_cor():
     color = random.randrange(13)
 
     if color < 6:
-        return "VERDE"
+        return "verde"
     elif color >= 6 and color < 10:
-        return "AMARELO"
+        return "amarelo"
     elif color >= 10 and color < 13:
-        return "VERMELHO"
+        return "vermelho"
 
 #ESSA FUNÇÃO SORTEIA E MOSTRA A COR E O LADO QUE CAIU
 def rolar_dado():
