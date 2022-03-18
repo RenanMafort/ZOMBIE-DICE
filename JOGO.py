@@ -44,7 +44,7 @@ def rolar_dado():
 cerebro = 0
 tiro = 0
 passos = 0
-n = 0
+
 
 
 def girar_dados():
@@ -68,9 +68,12 @@ def girar_dados():
             tiro += 1
         elif resultado == "Passos":
             passos += 1
-        print("Dado: %s e obteve %s " % (dado_cor, resultado))
-    print("Cerebro: %s\nTiro: %s\nPassos: %s\n " % (cerebro, tiro, passos))
+        print("\nDado: %s e obteve %s " % (dado_cor, resultado))
+    print("\nCerebro: %s\nTiro: %s\nPassos: %s\n " % (cerebro, tiro, passos))
 
+def jogarDados():
+    print("\nJogador %s irá jogar !!!" % listaJogadores[contaJogador])
+    girar_dados()
 
 
 print("Bem vindo ao jogo Zombie Dice!!!")
@@ -88,22 +91,46 @@ for i in range(numberPlayer):
     namePlayer = input("Digite o nome do " + str(i+1) + "° jogador: ")
     listaJogadores.append(namePlayer)
 
-currentPlayer = 0
+
+
+contaJogador = 0
 while True:
+    jogarDados()
 
-    print("Jogador %s irá começar o jogo!" % listaJogadores[currentPlayer])
+    if cerebro >= 3:
+        print("Você ganhou parabéns!!!")
+    else:
+        Continuarjogo = input("VOCÊ DESEJA CONTNUAR JOGANDO? sim / nao: ")
+        if Continuarjogo =="nao":
+                contaJogador+=1
+                cerebro = 0
+                tiro = 0
+                passos = 0
 
-    girar_dados()
-    Continuarjogo =input("VOCÊ DESEJA CONTNUAR JOGANDO? sim / nao: ")
-    if Continuarjogo =="nao":
-        currentPlayer +=1
-        cerebro = 0
-        tiro = 0
-        passos = 0
+                if tiro >= 3:
+                    print("Você perdeu o jogo!!!")
 
-        if currentPlayer == len(listaJogadores):
-            print("FINALIZANDO O JOGO...")
-            break
+                elif cerebro >= 3:
+                    print("Você ganhou parabéns!!!")
+
+                    if contaJogador == len(listaJogadores):
+                        print("FINALIZANDO O JOGO...")
+                        break
+        else:
+            if Continuarjogo =="sim":
+                    jogarDados()
+
+                    if tiro >= 3:
+                        print("Você perdeu o jogo!!!")
+                        break
+
+                    elif cerebro >= 3:
+                        print("%s ganhou parabéns!!!" % listaJogadores[contaJogador])
+                        break
+                    elif passos >=4:
+                        print("Sua vítimia fujiu , Você perdeu!!!")
+                        break
+
 
 
 
