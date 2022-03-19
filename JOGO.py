@@ -1,3 +1,9 @@
+"""
+Estudante: RENAN MAFORT SEREIA
+Curso: Análise e Desenvolvimento de Sistemas
+
+"""
+
 import random
 import time
 
@@ -76,14 +82,19 @@ def jogarDados():
     girar_dados()
 
 
+print("#######################################")
 print("Bem vindo ao jogo Zombie Dice!!!")
 
 numberPlayer=0
 while numberPlayer < 2:
-    numberPlayer=int(input("INFORME O NUMERO DE JOGADORES: "))
+    try:
 
-    if numberPlayer < 2:
-        print("AVISO! É NECESSÁRIO NO MíNIMO 2 JOGADORES!\n")
+        numberPlayer=int(input("INFORME O NUMERO DE JOGADORES: "))
+        print("\nAVISO! É NECESSÁRIO NO MíNIMO 2 JOGADORES!\n")
+    except ValueError:
+        print("Digite apenas números inteiros maior que 0.")
+
+
 
 
 listaJogadores = []
